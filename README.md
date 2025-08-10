@@ -1,55 +1,43 @@
-# Building Bridges — Participant Mock-up
+# Building Bridges — Full Mock-up
 
-A desktop-first clickable mock-up for the participant side of the Building Bridges mediation MVP.  
-Built with **Vite + React + TypeScript + Tailwind**. No backend — uses a local mock API.
+A desktop-first clickable **full mock-up** for the Building Bridges MVP with:
+- Participant dashboard + session flow
+- Create new session
+- Export transcript (Markdown)
+- Admin dashboard (view sessions)
+- Admin config (switch mock LLM provider)
 
-## Quick Start (Local)
+No backend — all data is in-memory via `src/mockApi.ts`.
+
+## Run locally
 
 ```bash
-# 1) Install deps
 npm install
-
-# 2) Run the dev server
 npm run dev
-
-# 3) Open the printed URL (usually http://localhost:5173)
+# open the printed URL (http://localhost:5173)
 ```
 
-## Import From GitHub to CodeSandbox
+## Deploy on Replit
 
-1. Push this folder to a new GitHub repo (e.g., `building-bridges-mockup`).
-2. Open https://codesandbox.io/ and choose **Import from GitHub**.
-3. Paste your repository URL.
-4. It will auto-install and run. If styles are missing, open the terminal and run:
-   ```bash
-   npm install
-   ```
-
-## Deploy (Optional)
-
-- **Vercel:** Import the GitHub repo in Vercel, select the framework preset **Vite**.
-- **Netlify:** New site from Git, build command `npm run build`, publish directory `dist/`.
-
-## Project Structure
-
+Set the run command to:
+```sh
+npm run dev
 ```
-src/
-  components/StatusBadge.tsx
-  pages/Dashboard.tsx
-  pages/SessionView.tsx
-  mockApi.ts
-  types.ts
-  App.tsx
-  main.tsx
-index.html
-tailwind.config.js
-postcss.config.js
-tsconfig.json
-tsconfig.node.json
-vite.config.ts
-```
+(Or for a built preview: `npm run build && npm run start`)
+
+## Import to CodeSandbox
+
+- Import from GitHub, or upload the ZIP.
+- If styles don’t load, run `npm install` once.
+
+## Update from your existing repo
+
+If you already have the participant mock:
+1. Replace the files with this version (or copy new files: `src/components/TopNav.tsx`, `src/pages/admin/*`, `src/utils/download.ts`).
+2. Ensure devDependency `@vitejs/plugin-react` exists.
+3. Commit & push.
 
 ## Notes
 
-- Mediator responses are mocked with a small delay to simulate round-trips.
-- This is **participant-only**. Admin console and real LLM backends come later.
+- Admin config changes only influence the **mock mediator** prefix.
+- All state resets on page refresh (intended for mock).
